@@ -14,15 +14,15 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.contrib import admin
-from django.urls import path, include, re_path
+from django.contrib import admin # admin
+from django.urls import path, include, re_path # default url handler
 
 from django.conf import settings
 from django.conf.urls.static import static
-from django.views.static import serve
+from django.views.static import serve # media and static
 
 from django.conf.urls import handler404
-from .errors import PageNotFoundView
+from .errors import PageNotFoundView # page not found view
 
 
 urlpatterns = [
@@ -36,6 +36,7 @@ urlpatterns = [
     path("", include("apps.account.urls")),
     path("", include("apps.contact.urls")),
     path("", include("apps.country.urls")),
+    path("", include("apps.base.urls")),
 ]
 
 # static and media
@@ -45,4 +46,5 @@ if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
 
 # error page settings
+
 handler404 = PageNotFoundView.as_view()
