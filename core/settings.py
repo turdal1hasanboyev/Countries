@@ -36,7 +36,7 @@ DEBUG = True # DEBUG
 
 ALLOWED_HOSTS = ['*'] # ALLOWED_HOSTS
 
-# AUTH_USER_MODEL = 'account.CustomUser' # AUTH USER MODEL
+AUTH_USER_MODEL = 'account.CustomUser' # AUTH USER MODEL
 
 
 # Application definition
