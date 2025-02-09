@@ -12,8 +12,8 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 from pathlib import Path
 
-import environ # .environment
-import os # is os
+import environ  # .environment
+import os  # is os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -28,15 +28,15 @@ env.read_env(os.path.join(BASE_DIR, '.env'))
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env.str("SECRET_KEY", default='SECRET_KEY') # SECRET_KEY
+SECRET_KEY = env.str("SECRET_KEY", default='SECRET_KEY')  # SECRET_KEY
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True # DEBUG
+DEBUG = True  # DEBUG
 
-ALLOWED_HOSTS = ['*'] # ALLOWED_HOSTS
+ALLOWED_HOSTS = ['*']  # ALLOWED_HOSTS
 
-AUTH_USER_MODEL = 'account.CustomUser' # AUTH USER MODEL
+AUTH_USER_MODEL = 'account.CustomUser'  # AUTH USER MODEL
 
 
 # Application definition
@@ -99,12 +99,12 @@ MIDDLEWARE = [
     'query_counter.middleware.DjangoQueryCounterMiddleware',
 ]
 
-ROOT_URLCONF = 'core.urls' # Root urls
+ROOT_URLCONF = 'core.urls'  # Root urls
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'], # template
+        'DIRS': [BASE_DIR / 'templates'],  # template
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -128,25 +128,25 @@ WSGI_APPLICATION = 'core.wsgi.application'
 
 # Default database
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 
 # <======================= PSQL database ======================>
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'country',
-#         'USER': 'country',
-#         'PASSWORD': 'country',
-#         'HOST': '127.0.0.1', # or 'localhost'
-#         'PORT': '5432',
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'country',
+        'USER': 'country',
+        'PASSWORD': 'country',
+        'HOST': '127.0.0.1',  # or 'localhost'
+        'PORT': '5432',
+    }
+}
 
 
 # Password validation
@@ -179,7 +179,7 @@ USE_I18N = True
 
 USE_TZ = True
 
-USE_I10N = True # for number
+USE_I10N = True  # for number
 
 
 # Static files (CSS, JavaScript, Images)
@@ -219,9 +219,12 @@ CKEDITOR_CONFIGS = {
             ['Source', '-', 'Bold', 'Italic']
         ],
         'toolbar_YourCustomToolbarConfig': [
-            {'name': 'document', 'items': ['Source', '-', 'Save', 'NewPage', 'Preview', 'Print', '-', 'Templates']},
-            {'name': 'clipboard', 'items': ['Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo']},
-            {'name': 'editing', 'items': ['Find', 'Replace', '-', 'SelectAll']},
+            {'name': 'document', 'items': [
+                'Source', '-', 'Save', 'NewPage', 'Preview', 'Print', '-', 'Templates']},
+            {'name': 'clipboard', 'items': [
+                'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo']},
+            {'name': 'editing', 'items': [
+                'Find', 'Replace', '-', 'SelectAll']},
             {'name': 'forms',
              'items': ['Form', 'Checkbox', 'Radio', 'TextField', 'Textarea', 'Select', 'Button', 'ImageButton',
                        'HiddenField']},
@@ -236,7 +239,8 @@ CKEDITOR_CONFIGS = {
             {'name': 'insert',
              'items': ['Image', 'Flash', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 'PageBreak', 'Iframe']},
             '/',
-            {'name': 'styles', 'items': ['Styles', 'Format', 'Font', 'FontSize']},
+            {'name': 'styles', 'items': [
+                'Styles', 'Format', 'Font', 'FontSize']},
             {'name': 'colors', 'items': ['TextColor', 'BGColor']},
             {'name': 'tools', 'items': ['Maximize', 'ShowBlocks']},
             {'name': 'about', 'items': ['About']},
@@ -258,7 +262,7 @@ CKEDITOR_CONFIGS = {
         # 'mathJaxLib': '//cdn.mathjax.org/mathjax/2.2-latest/MathJax.js?config=TeX-AMS_HTML',
         'tabSpaces': 4,
         'extraPlugins': ','.join([
-            'uploadimage', # the upload image feature
+            'uploadimage',  # the upload image feature
             # your extra plugins here
             'div',
             'autolink',

@@ -17,18 +17,20 @@ class CustomUser(BaseModel, AbstractUser):
     firs_name = null=True, blank=True
     last_name = null=True, blank=True
     """
-    username = None # Username none
-    first_name = models.CharField(max_length=150, blank=True, null=True) # null=True
-    last_name = models.CharField(max_length=150, blank=True, null=True) # null=True
+    username = None  # Username none
+    first_name = models.CharField(
+        max_length=150, blank=True, null=True)  # null=True
+    last_name = models.CharField(
+        max_length=150, blank=True, null=True)  # null=True
     email = models.EmailField(max_length=150, unique=True, db_index=True)
     description = RichTextField(null=True, blank=True)
     image = models.ImageField(
         upload_to='users', default='img/default-user.png', null=True, blank=True)
-    
+
     objects = CustomUserManager()
 
     USERNAME_FIELD = "email"
-    REQUIRED_FIELDS = [] # Shu holatda turishi kerak
+    REQUIRED_FIELDS = []  # Shu holatda turishi kerak
 
     class Meta:
         verbose_name = "Foydalanuvchi"
