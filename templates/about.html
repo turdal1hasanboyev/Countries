@@ -1,1 +1,34 @@
-{% load static %}
+{% extends "base.html" %}
+
+{% block title %}About Us{% endblock %}
+
+{% block content %}
+
+<div class="container my-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header bg-primary text-white text-center">
+                    <h3>About Our Website</h3>
+                </div>
+                <div class="card-body">
+                    <p>Welcome to <strong>Countries Information</strong>, your go-to source for detailed and accurate
+                        information about different countries around the world.</p>
+                    <h5>What We Offer</h5>
+                    <ul>
+                        <li>Comprehensive data on countries, including population, area, and government type.</li>
+                        <li>Up-to-date information on country leaders and economic indicators.</li>
+                        <li>A user-friendly interface to search and explore countries easily.</li>
+                    </ul>
+                    <h5>Our Mission</h5>
+                    <p>We aim to provide accurate and accessible information about countries to help users explore the
+                        world with ease.</p>
+                    <h5>Contact Us</h5>
+                    <p>If you have any questions or feedback, feel free to <a href="#">contact us</a>.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
