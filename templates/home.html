@@ -5,32 +5,25 @@
 {% block content %}
 
 <div class="container mt-4">
-    <h2>Davlatlar Ro'yxati</h2>
 
     <!-- Xabarlarni ko‘rsatish -->
     {% if messages %}
-        <div class="alert alert-info">
-            {% for message in messages %}
-                <p>{{ message }}</p>
-            {% endfor %}
-        </div>
+    <div class="alert alert-info">
+        {% for message in messages %}
+        <p>{{ message }}</p>
+        {% endfor %}
+    </div>
     {% endif %}
 
-    <!-- Qidiruv natijalari -->
-    {% if country %}
-        <h3>Qidiruv natijalari:</h3>
-        <ul class="list-group">
-            {% for c in country %}
-                <a href="{% url 'single-page' c.uuid %}"><li class="list-group-item">{{ c.name }}</li></a>
-            {% endfor %}
-        </ul>
-    {% endif %}
+    <h2>Davlatlar Ro'yxati</h2>
 
     <!-- Barcha davlatlar -->
     <ul class="list-group">
         {% if countries %}
         {% for c in countries %}
-            <a href="{% url 'single-page' c.uuid %}"><li class="list-group-item">{{ c.name }}</li></a>
+        <a href="{% url 'single-page' c.uuid %}">
+            <li class="list-group-item">{{ c.name }}</li>
+        </a>
         {% endfor %}
         {% else %}
         <li class="list-group-item">Davlatlar mavjud emas.</li>

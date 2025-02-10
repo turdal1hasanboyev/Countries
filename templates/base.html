@@ -17,13 +17,13 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="/">Home</a>
+                        <a class="nav-link" href="{% url 'home' %}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/about/">About</a>
+                        <a class="nav-link" href="{% url 'about' %}">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/contact/">Contact</a>
+                        <a class="nav-link" href="{% url 'contact' %}">Contact</a>
                     </li>
                 </ul>
 
@@ -64,7 +64,7 @@
     <!-- Subscription Form -->
     <section class="container text-center my-4">
         <h4>Subscribe to Our Newsletter</h4>
-        <form method="POST" class="d-flex justify-content-center">
+        <form method="post" class="d-flex justify-content-center">
             {% csrf_token %}
             <input type="email" name="sub_email" class="form-control w-50 me-2" placeholder="Enter your email">
             <button type="submit" class="btn btn-primary">Subscribe</button>

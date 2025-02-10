@@ -15,14 +15,14 @@ class HomeView(View):
     def get(self, request, *args, **kwargs):
         search = request.GET.get('query')
 
-        countries = Country.objects.filter(is_active=True)
+        countries = Country.objects.filter(is_active=True).order_by('name')
 
         if search:
             countries = Country.objects.filter(
                 name__icontains=search, is_active=True)
 
         context = {
-            'countries': countries.order_by('name')[:10],
+            'countries': countries,
         }
 
         return render(request, 'home.html', context)

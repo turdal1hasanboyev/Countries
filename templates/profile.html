@@ -8,9 +8,6 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header bg-primary text-white">
-                    <h3>Profile Information</h3>
-                </div>
                 <!-- Xabarlarni ko‘rsatish -->
                 {% if messages %}
                 <div class="alert alert-info">
@@ -19,6 +16,9 @@
                     {% endfor %}
                 </div>
                 {% endif %}
+                <div class="card-header bg-primary text-white">
+                    <h3>Profile Information</h3>
+                </div>
                 <div class="card-body text-center">
                     <img src="{{ request.user.image.url }}" class="rounded-circle mb-3" width="150" height="150"
                         alt="User Image">

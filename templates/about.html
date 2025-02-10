@@ -8,9 +8,6 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header bg-primary text-white text-center">
-                    <h3>About Our Website</h3>
-                </div>
                 <!-- Xabarlarni ko‘rsatish -->
                 {% if messages %}
                 <div class="alert alert-info">
@@ -19,6 +16,9 @@
                     {% endfor %}
                 </div>
                 {% endif %}
+                <div class="card-header bg-primary text-white text-center">
+                    <h3>About Our Website</h3>
+                </div>
                 <div class="card-body">
                     <p>Welcome to <strong>Countries Information</strong>, your go-to source for detailed and accurate
                         information about different countries around the world.</p>

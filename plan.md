@@ -6,3 +6,4 @@
 * Loyiha barcha modellari yozib bo'lindi va admin sayt uchun tayyorlanmoqda!
 * Sahifalar uchun view yozilmoqda!
 * Bugunga loyiha optimizatsiyasi va home va single sahifalari
+* Loyiha to'lliq holda optimizatsiya qilinmoqda...

@@ -44,7 +44,7 @@ class CountryAdmin(admin.ModelAdmin):
         'leader_name',
         'leader_title',
     )
-    
+
     fieldsets = (
         ('General', {
             'fields': ('name', 'iso_code', 'capital',),

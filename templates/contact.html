@@ -8,9 +8,6 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header bg-primary text-white text-center">
-                    <h3>Contact Us</h3>
-                </div>
                 <!-- Xabarlarni ko‘rsatish -->
                 {% if messages %}
                 <div class="alert alert-info">
@@ -19,6 +16,9 @@
                     {% endfor %}
                 </div>
                 {% endif %}
+                <div class="card-header bg-primary text-white text-center">
+                    <h3>Contact Us</h3>
+                </div>
                 <div class="card-body">
                     <form method="post">
                         {% csrf_token %}
