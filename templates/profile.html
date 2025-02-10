@@ -27,7 +27,7 @@
                     <hr>
                     <h5>Description</h5>
                     <p>{{ request.user.description|safe }}</p>
-                    <a href="#" class="btn btn-danger">Logout</a>
+                    <a href="{% url 'logout' %}" class="btn btn-danger">Logout</a>
                 </div>
             </div>
         </div>

@@ -5,7 +5,11 @@ from django.contrib import messages
 
 from apps.base.models import SubEmail
 
+from django.contrib.auth.decorators import login_required # for login_required
+from django.utils.decorators import method_decorator # login majburiy qilish
 
+
+@method_decorator(login_required, name='dispatch') # login_required decorator
 class ProfileView(View):
     """
     View to display user's profile information.
