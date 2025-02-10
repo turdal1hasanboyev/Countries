@@ -32,7 +32,7 @@ SECRET_KEY = env.str("SECRET_KEY", default='SECRET_KEY')  # SECRET_KEY
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True  # DEBUG
+DEBUG = False  # DEBUG
 
 ALLOWED_HOSTS = ['*']  # ALLOWED_HOSTS
 

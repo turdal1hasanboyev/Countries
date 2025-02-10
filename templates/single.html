@@ -6,13 +6,19 @@
 
 <div class="container mt-4">
 
-    <!-- Xabarlar (messages) -->
+    <!-- Xabarlarni ko‘rsatish -->
     {% if messages %}
-    <div class="alert alert-info">
-        {% for message in messages %}
-        <p>{{ message }}</p>
-        {% endfor %}
+    {% for message in messages %}
+    <div class="alert 
+{% if message.tags == 'success' %}alert-success
+{% elif message.tags == 'error' %}alert-danger
+{% elif message.tags == 'warning' %}alert-warning
+{% else %}alert-info{% endif %}
+alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
+    {% endfor %}
     {% endif %}
 
     <!-- Davlat nomi -->
