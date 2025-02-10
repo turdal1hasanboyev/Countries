@@ -28,10 +28,9 @@
                 </ul>
 
                 <!-- Search Form -->
-                <form class="d-flex" method="post" action="/">
-                    {% csrf_token %}
+                <form class="d-flex" method="get" action="{% url 'home' %}">
                     <input class="form-control me-2" type="search" placeholder="Search..." name="query"
-                        aria-label="Search">
+                        value="{{ request.GET.query|default_if_none:'' }}" aria-label="Search">
                     <button class="btn btn-outline-light" type="submit">Search</button>
                 </form>
 

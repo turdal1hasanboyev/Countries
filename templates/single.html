@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block title %}Single Page {{ country.name }} {% endblock %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+    <!-- Xabarlar (messages) -->
+    {% if messages %}
+    <div class="alert alert-info">
+        {% for message in messages %}
+        <p>{{ message }}</p>
+        {% endfor %}
+    </div>
+    {% endif %}
+    
+    <!-- Davlat nomi -->
+    <h2>{{ country.name }}</h2>
+
+    <!-- Davlat haqida ma'lumot -->
+    <div class="card mb-4">
+        <div class="card-header">
+            <h4>Asosiy Ma'lumotlar</h4>
+        </div>
+        <div class="card-body">
+            <p><strong>ISO Code:</strong> {{ country.iso_code }}</p>
+            <p><strong>Poytaxt:</strong> {{ country.capital }}</p>
+            <p><strong>Aholi soni:</strong> {{ country.population|default:"Noma'lum" }} kishi</p>
+            <p><strong>Maydoni:</strong> {{ country.area|default:"Noma'lum" }} km²</p>
+            <p><strong>Qit'a:</strong> {{ country.get_continent_display }}</p>
+            <p><strong>Pul birligi:</strong> {{ country.currency }}</p>
+            <p><strong>Telefon kodi:</strong> {{ country.phone_code }}</p>
+        </div>
+    </div>
+
+    <!-- Davlat rahbari haqida -->
+    <div class="card mb-4">
+        <div class="card-header">
+            <h4>Rahbar</h4>
+        </div>
+        <div class="card-body">
+            <p><strong>Ismi:</strong> {{ country.leader_name }}</p>
+            <p><strong>Lavozimi:</strong> {{ country.get_leader_title_display }}</p>
+        </div>
+    </div>
+
+    <!-- Davlat bayrog‘i -->
+    {% if country.flag %}
+    <div class="text-center mb-4">
+        <img src="{{ country.flag.url }}" alt="{{ country.name }} bayrog‘i" class="img-fluid" style="max-width: 300px;">
+    </div>
+    {% endif %}
+
+</div>
+
+{% endblock %}

@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
 
 from django.views import View
 from django.contrib import messages
@@ -13,7 +13,13 @@ class HomeView(View):
     """
 
     def get(self, request, *args, **kwargs):
+        search = request.GET.get('query')
+
         countries = Country.objects.filter(is_active=True)
+
+        if search:
+            countries = Country.objects.filter(
+                name__icontains=search, is_active=True)
 
         context = {
             'countries': countries.order_by('name')[:10],
@@ -22,14 +28,7 @@ class HomeView(View):
         return render(request, 'home.html', context)
 
     def post(self, request, *args, **kwargs):
-        countries = Country.objects.filter(is_active=True)
-
-        search = request.POST.get('query')
         sub_email = request.POST.get('sub_email')
-
-        if search:
-            countries = Country.objects.filter(
-                name__icontains=search, is_active=True)
 
         if sub_email:
             if SubEmail.objects.filter(email=sub_email).exists():
@@ -37,11 +36,45 @@ class HomeView(View):
             else:
                 SubEmail.objects.create(email=sub_email)
                 messages.success(request, 'Email added successfully')
+            return redirect('home')
         else:
             messages.error(request, 'Please enter email')
+            return redirect('home')
+
+
+class SinglePageView(View):
+    """
+    View to handle single page.
+    """
+
+    template_name = "single.html"
+
+    def get(self, request, *args, **kwargs):
+        uuid = kwargs.get('uuid')
+
+        country = get_object_or_404(Country, uuid=uuid, is_active=True)
 
         context = {
-            'countries': countries.order_by('name')[:10],
+            'country': country,
         }
 
-        return render(request, 'home.html', context)
+        return render(request, self.template_name, context)
+
+    def post(self, request, *args, **kwargs):
+        url = request.build_absolute_uri()
+
+        sub_email = request.POST.get('sub_email')
+
+        if sub_email:
+            if SubEmail.objects.filter(email=sub_email).exists():
+                messages.error(request, 'Email already exists')
+            else:
+                SubEmail.objects.create(email=sub_email)
+                messages.success(request, 'Email added successfully')
+            return redirect(url)
+        else:
+            messages.error(request, 'Please enter email')
+            return redirect(url)
+
+
+single_page_as_view = SinglePageView.as_view()

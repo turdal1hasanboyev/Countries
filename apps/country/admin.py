@@ -55,6 +55,9 @@ class CountryAdmin(admin.ModelAdmin):
         ('Economy', {
             'fields': ('currency', 'phone_code',),
         }),
+        ('Flag', {
+            'fields': ('flag',),
+        }),
         ('Politics', {
             'fields': ('leader_name', 'leader_title',),
         }),

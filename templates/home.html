@@ -21,17 +21,20 @@
         <h3>Qidiruv natijalari:</h3>
         <ul class="list-group">
             {% for c in country %}
-                <a href="#"><li class="list-group-item">{{ c.name }}</li></a>
+                <a href="{% url 'single-page' c.uuid %}"><li class="list-group-item">{{ c.name }}</li></a>
             {% endfor %}
         </ul>
     {% endif %}
 
     <!-- Barcha davlatlar -->
-    <h3 class="mt-4">Oxirgi 10 ta davlat</h3>
     <ul class="list-group">
+        {% if countries %}
         {% for c in countries %}
-            <a href="#"><li class="list-group-item">{{ c.name }}</li></a>
+            <a href="{% url 'single-page' c.uuid %}"><li class="list-group-item">{{ c.name }}</li></a>
         {% endfor %}
+        {% else %}
+        <li class="list-group-item">Davlatlar mavjud emas.</li>
+        {% endif %}
     </ul>
 </div>
 
