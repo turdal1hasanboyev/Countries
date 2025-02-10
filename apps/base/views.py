@@ -1,10 +1,9 @@
 from django.shortcuts import render, redirect
 
+from django.views import View
 from django.contrib import messages
 
-from django.views import View
-
-from ..base.models import SubEmail
+from apps.base.models import SubEmail
 
 
 class AboutView(View):
@@ -14,18 +13,18 @@ class AboutView(View):
 
     def get(self, request, *args, **kwargs):
         return render(request, 'about.html')
-    
+
     def post(self, request, *args, **kwargs):
+        url = request.META.get('HTTP_REFERER')
         sub_email = request.POST.get('sub_email')
 
-        if SubEmail.objects.filter(email=sub_email).exists():
-            messages.error(request, 'Email already subscribed')
-            return redirect(request.META.get('HTTP_REFERER'))
-
         if sub_email:
-            SubEmail.objects.create(email=sub_email)
-            messages.success(request, 'Email subscribed')
-            return redirect(request.META.get('HTTP_REFERER'))
+            if SubEmail.objects.filter(email=sub_email).exists():
+                messages.error(request, 'Email already exists')
+            else:
+                SubEmail.objects.create(email=sub_email)
+                messages.success(request, 'Email added successfully')
+            return redirect(url)
         else:
-            messages.error(request, 'Please enter your email address.')
-            return redirect(request.META.get('HTTP_REFERER'))
+            messages.error(request, 'Email is required')
+            return redirect(url)

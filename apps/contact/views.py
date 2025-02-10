@@ -1,7 +1,6 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 
 from django.contrib import messages
-
 from django.views import View
 
 from .models import Contact
@@ -17,7 +16,7 @@ class ContactView(View):
 
     def get(self, request, *args, **kwargs):
         return render(request, self.template_name)
-    
+
     def post(self, request, *args, **kwargs):
         """
         Handle contact form submission.
@@ -30,38 +29,36 @@ class ContactView(View):
 
         sub_email = request.POST.get('sub_email')
 
-        url = request.build_absolute_uri()
-
-        if SubEmail.objects.filter(email=sub_email).exists():
-            messages.error(request, 'You are already subscribed to our newsletter.')
-            # return redirect(url)
-        
         if sub_email:
-            SubEmail.objects.create(email=sub_email)
-            messages.success(request, 'You have been successfully subscribed to our newsletter.')
-            # return redirect(url)
+            if SubEmail.objects.filter(email=sub_email).exists():
+                messages.error(
+                    request, 'You are already subscribed to our newsletter.')
+            else:
+                SubEmail.objects.create(email=sub_email)
+                messages.success(
+                    request, 'You have been successfully subscribed to our newsletter.')
         else:
-            messages.error(request, 'Please enter your email address to subscribe to our newsletter.')
-            # return redirect(url)
+            messages.error(
+                request, 'Please enter your email to subscribe to our newsletter.')
 
-        if Contact.objects.filter(
-            name=name,
-            email=email,
-            phone_number=phone_number,
-            message=message,
-        ).exists():
-            messages.error(request, 'You have already sent a message.')
-            return redirect(url)
-        
         if name and email and phone_number and message:
-            Contact.objects.create(
+            if Contact.objects.filter(
                 name=name,
                 email=email,
                 phone_number=phone_number,
                 message=message,
-            )
-            messages.success(request, 'Message sent successfully.')
-            return redirect(url)
+            ).exists():
+                messages.error(request, 'You have already sent a message.')
+            else:
+                Contact.objects.create(
+                    name=name,
+                    email=email,
+                    phone_number=phone_number,
+                    message=message,
+                )
+                messages.success(
+                    request, 'Your message has been sent successfully.')
         else:
             messages.error(request, 'Please fill all fields.')
-            return redirect(url)
+
+        return render(request, self.template_name)

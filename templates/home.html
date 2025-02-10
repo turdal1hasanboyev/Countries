@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}Countries{% endblock %}
+
+{% block content %}
+
+<div class="container mt-4">
+    <h2>Davlatlar Ro'yxati</h2>
+
+    <!-- Xabarlarni ko‘rsatish -->
+    {% if messages %}
+        <div class="alert alert-info">
+            {% for message in messages %}
+                <p>{{ message }}</p>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <!-- Qidiruv natijalari -->
+    {% if country %}
+        <h3>Qidiruv natijalari:</h3>
+        <ul class="list-group">
+            {% for c in country %}
+                <a href="#"><li class="list-group-item">{{ c.name }}</li></a>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <!-- Barcha davlatlar -->
+    <h3 class="mt-4">Oxirgi 10 ta davlat</h3>
+    <ul class="list-group">
+        {% for c in countries %}
+            <a href="#"><li class="list-group-item">{{ c.name }}</li></a>
+        {% endfor %}
+    </ul>
+</div>
+
+{% endblock %}

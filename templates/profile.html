@@ -11,6 +11,14 @@
                 <div class="card-header bg-primary text-white">
                     <h3>Profile Information</h3>
                 </div>
+                <!-- Xabarlarni ko‘rsatish -->
+                {% if messages %}
+                <div class="alert alert-info">
+                    {% for message in messages %}
+                    <p>{{ message }}</p>
+                    {% endfor %}
+                </div>
+                {% endif %}
                 <div class="card-body text-center">
                     <img src="{{ request.user.image.url }}" class="rounded-circle mb-3" width="150" height="150"
                         alt="User Image">

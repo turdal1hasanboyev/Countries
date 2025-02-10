@@ -11,6 +11,14 @@
                 <div class="card-header bg-primary text-white text-center">
                     <h3>About Our Website</h3>
                 </div>
+                <!-- Xabarlarni ko‘rsatish -->
+                {% if messages %}
+                <div class="alert alert-info">
+                    {% for message in messages %}
+                    <p>{{ message }}</p>
+                    {% endfor %}
+                </div>
+                {% endif %}
                 <div class="card-body">
                     <p>Welcome to <strong>Countries Information</strong>, your go-to source for detailed and accurate
                         information about different countries around the world.</p>
@@ -24,7 +32,8 @@
                     <p>We aim to provide accurate and accessible information about countries to help users explore the
                         world with ease.</p>
                     <h5>Contact Us</h5>
-                    <p>If you have any questions or feedback, feel free to <a href="{% url 'contact' %}">contact us</a>.</p>
+                    <p>If you have any questions or feedback, feel free to <a href="{% url 'contact' %}">contact us</a>.
+                    </p>
                 </div>
             </div>
         </div>
