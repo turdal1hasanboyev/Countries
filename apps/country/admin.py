@@ -8,7 +8,7 @@ class CountryAdmin(admin.ModelAdmin):
     Admin interface for Country model.
     """
     list_display = (
-        'uuid',
+        'id',
         'name',
         'iso_code',
         'capital',
@@ -26,7 +26,7 @@ class CountryAdmin(admin.ModelAdmin):
     )
     ordering = ('name',)
     readonly_fields = (
-        'uuid',
+        'id',
         'created_at',
         'updated_at',
     )
@@ -67,8 +67,8 @@ class CountryAdmin(admin.ModelAdmin):
         ('Important Dates', {
             'fields': ('created_at', 'updated_at',),
         }),
-        ('UUID', {
-            'fields': ('uuid',),
+        ('ID', {
+            'fields': ('id',),
         }),
     )
 

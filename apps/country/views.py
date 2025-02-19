@@ -51,9 +51,9 @@ class SinglePageView(View):
     template_name = "single.html"
 
     def get(self, request, *args, **kwargs):
-        uuid = kwargs.get('uuid')
+        pk = kwargs.get('pk')
 
-        country = get_object_or_404(Country, uuid=uuid, is_active=True)
+        country = get_object_or_404(Country, id=pk, is_active=True)
 
         context = {
             'country': country,

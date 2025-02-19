@@ -10,20 +10,20 @@ class Country(models.Model):
     """
     Custom UUID field for Country model
     """
-    uuid = models.UUIDField(
-        primary_key=True,  # UUID asosiy kalit bo‘ladi
-        default=uuid.uuid4(),  # Har bir obyekt uchun avtomatik UUID4
-        editable=False,  # UUID qo‘lda o‘zgartirilmasligi kerak
-        unique=True,  # Takrorlanmasligi kerak
-        db_index=True,  # Index qo‘shiladi, qidiruv tezlashadi
-        verbose_name="Unique Identifier",  # Admin panel uchun tushunarli nom
-        # Qo‘shimcha tushuntirish
-        help_text="Auto-generated unique identifier for each country",
-        db_column="uuid",  # Ma'lumotlar bazasidagi ustun nomi
-        error_messages={
-            "unique": "This UUID already exists!",  # Xatolik chiqsa tushunarli matn
-        }
-    )
+    # uuid = models.UUIDField(
+    #     primary_key=True,  # UUID asosiy kalit bo‘ladi
+    #     default=uuid.uuid4(),  # Har bir obyekt uchun avtomatik UUID4
+    #     editable=False,  # UUID qo‘lda o‘zgartirilmasligi kerak
+    #     unique=True,  # Takrorlanmasligi kerak
+    #     db_index=True,  # Index qo‘shiladi, qidiruv tezlashadi
+    #     verbose_name="Unique Identifier",  # Admin panel uchun tushunarli nom
+    #     # Qo‘shimcha tushuntirish
+    #     help_text="Auto-generated unique identifier for each country",
+    #     db_column="uuid",  # Ma'lumotlar bazasidagi ustun nomi
+    #     error_messages={
+    #         "unique": "This UUID already exists!",  # Xatolik chiqsa tushunarli matn
+    #     }
+    # )
     name = models.CharField(max_length=100, unique=True,
                             db_index=True)  # Davlat nomi
     iso_code = models.CharField(
@@ -69,4 +69,4 @@ class Country(models.Model):
         verbose_name_plural = "Davlatlar"
 
     def __str__(self):
-        return f"{self.uuid}-{self.name}"
+        return f"{self.id}-{self.name}"
