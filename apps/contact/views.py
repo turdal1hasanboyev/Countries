@@ -1,6 +1,7 @@
 from django.shortcuts import render
 
 from django.contrib import messages
+
 from django.views import View
 
 from .models import Contact
