@@ -34,7 +34,11 @@ SECRET_KEY = env.str("SECRET_KEY", default='SECRET_KEY')  # SECRET_KEY
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False  # DEBUG
 
-ALLOWED_HOSTS = ['*']  # ALLOWED_HOSTS
+ALLOWED_HOSTS = [
+    'https://countries-1-c50i.onrender.com/',
+    '127.0.0.1',
+    'localhost',
+]  # ALLOWED_HOSTS
 
 AUTH_USER_MODEL = 'account.CustomUser'  # AUTH USER MODEL
 
