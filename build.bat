@@ -4,8 +4,8 @@ set -o errexit
 
 pip install -r requirements.txt
 
-py manage.py collectstatic --no input
+python manage.py collectstatic --no input
 
-py manage.py makemigrations
+python manage.py makemigrations
 
-py manage.py migrate
+python manage.py migrate
